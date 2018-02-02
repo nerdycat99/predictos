@@ -1,0 +1,13 @@
+<div class="col-8 offset-1">
+  <h1>awight sunshine, get yer money out and be a man</h1>
+  week <%= @game.title %>
+  <br /><br />
+  <div class="col-md-6 col-md-offset-3">
+    <%= simple_form_for @game, url: game_path do |f| %>
+      <%= f.input :hometeam_prediction, label: @game.hometeam %>
+      <%= f.input :awayteam_prediction, label: @game.awayteam %>
+      <br />
+      <%= f.submit "make prediction", class: 'btn btn-primary' %>
+      <br />
+  <% end %>
+</div>

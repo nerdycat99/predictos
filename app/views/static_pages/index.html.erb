@@ -1,0 +1,24 @@
+<br />
+<div class="col-8 offset-1">
+  <h1>six nations predictor</h1>
+  <br />
+  <h3>'ave a fackin punt son or i'll be round to shit on yer carpet you mug</h3>
+  <div class="booyah-box">
+    the rules - pick the wnning team and you get 5pts <br />
+    get the score spot on and it's 7 bonus points. if you're one point out 6 bonus points down to 1 point if you're six points out.
+  </div>
+  <% if current_user %>
+    <br />
+    <% current_user.games.each do |game| %>
+      <%= link_to 'predict', edit_game_path(game), class: 'btn btn-primary' %> &nbsp;
+      week <%=game.title %> &nbsp; &nbsp;
+
+      <%=game.hometeam %> vs <%=game.awayteam %> &nbsp; &nbsp; &nbsp;
+      <%=game.hometeam_prediction %> - <%=game.awayteam_prediction %><br /><br />
+
+
+    <% end %>
+
+
+  <% end %>
+</div>
