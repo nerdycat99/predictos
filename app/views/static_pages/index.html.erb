@@ -10,7 +10,11 @@
   <% if current_user %>
     <br />
     <% current_user.games.each do |game| %>
-      <%= link_to 'predict', edit_game_path(game), class: 'btn btn-primary' %> &nbsp;
+      <% if (game.title.include? "one") %>
+        <%= link_to 'closed', root_path(game), class: 'btn btn-warning' %> &nbsp;
+      <% else %>
+        <%= link_to 'predict', edit_game_path(game), class: 'btn btn-primary' %> &nbsp;
+      <% end%>
       week <%=game.title %> &nbsp; &nbsp;
 
       <%=game.hometeam %> vs <%=game.awayteam %> &nbsp; &nbsp; &nbsp;
