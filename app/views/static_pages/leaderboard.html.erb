@@ -11,7 +11,7 @@
           <% @results.each do |result| %>
             <% if (result.hometeam.eql? prediction.hometeam) && (result.awayteam.eql? prediction.awayteam) %>
 
-              <% if false %>
+              <% if prediction.hometeam_prediction
 
               <% if ((prediction.hometeam_prediction > prediction.awayteam_prediction) && (result.hometeam_result > result.awayteam_result)) || ((prediction.hometeam_prediction < prediction.awayteam_prediction) && (result.hometeam_result < result.awayteam_result)) %>
 
@@ -34,7 +34,7 @@
                 <% this_user_score += 1 %>
               <% end %>
 
-              <% end %>
+    
 
             <% end %>
           <% end %>
