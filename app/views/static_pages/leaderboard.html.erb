@@ -11,13 +11,13 @@
           <% @results.each do |result| %>
             <% if (result.hometeam.eql? prediction.hometeam) && (result.awayteam.eql? prediction.awayteam) %>
 
-              <% if false %>
+              
 
               <% if (prediction.hometeam_prediction > prediction.awayteam_prediction) && (result.hometeam_result > result.awayteam_result) || (prediction.hometeam_prediction < prediction.awayteam_prediction) && (result.hometeam_result < result.awayteam_result)%>
-                <% this_user_score += 5 %>
+                
               <% end %>
 
-              <% end %>
+              <% if false %>
 
               <% if (prediction.hometeam_prediction == result.hometeam_result) && (prediction.awayteam_prediction == result.awayteam_result) %>
                 <% this_user_score += 7 %>
@@ -35,7 +35,7 @@
                 <% this_user_score += 1 %>
               <% end %>
 
-              
+              <% end %>
 
             <% end %>
           <% end %>
