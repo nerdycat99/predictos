@@ -1,0 +1,16 @@
+
+
+<div class="col-8 offset-1">
+  <h1>enter a result here</h1>
+  <br /><br />
+  <div class="col-md-6 col-md-offset-3">
+    <%= simple_form_for @result, url: results_path do |f| %>
+      <%= f.input :hometeam, label: "hometeam" %>
+      <%= f.input :hometeam_result, label: "hometeam result" %>
+      <%= f.input :awayteam, label: "awayteam" %>
+      <%= f.input :awayteam_result, label: "awayteam result" %>
+      <br />
+      <%= f.submit "enter result", class: 'btn btn-primary' %>
+      <br />
+  <% end %>
+</div>

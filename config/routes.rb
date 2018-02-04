@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get 'leaderboard', to: 'static_pages#leaderboard'
 
   resources :games
+  resources :results
   
 end
