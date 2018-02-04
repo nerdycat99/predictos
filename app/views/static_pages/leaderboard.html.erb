@@ -18,7 +18,20 @@
 
               <% if (prediction.hometeam_prediction == result.hometeam_result) && (prediction.awayteam_prediction == result.awayteam_result) %>
                 <% this_user_score += 7 %>
+              <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-1,result.hometeam_result+1) && prediction.awayteam_prediction.between?(result.awayteam_result-1,result.awayteam_result+1)%>
+                <% this_user_score += 6 %>
+              <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-2,result.hometeam_result+2) && prediction.awayteam_prediction.between?(result.awayteam_result-2,result.awayteam_result+2)%>
+                <% this_user_score += 5 %>
+              <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-3,result.hometeam_result+3) && prediction.awayteam_prediction.between?(result.awayteam_result-3,result.awayteam_result+3)%>
+                <% this_user_score += 4 %>
+              <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-4,result.hometeam_result+4) && prediction.awayteam_prediction.between?(result.awayteam_result-4,result.awayteam_result+4)%>
+                <% this_user_score += 3 %>
+              <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-5,result.hometeam_result+5) && prediction.awayteam_prediction.between?(result.awayteam_result-5,result.awayteam_result+5)%>
+                <% this_user_score += 2 %>
+              <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-6,result.hometeam_result+6) && prediction.awayteam_prediction.between?(result.awayteam_result-6,result.awayteam_result+6)%>
+                <% this_user_score += 1 %>
               <% end %>
+
 
             <% end %>
           <% end %>
