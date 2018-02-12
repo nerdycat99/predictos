@@ -7,7 +7,7 @@
     <% @users.each do |user| %>
       <% this_user_score = 0 %>
       <% user.games.each do |prediction| %>
-        <% if (prediction.title.include? "one") %>
+        <% if (prediction.title.include? "one") || (prediction.title.include? "two") %>
           <% @results.each do |result| %>
             <% if (result.hometeam.eql? prediction.hometeam) && (result.awayteam.eql? prediction.awayteam) %>
 
