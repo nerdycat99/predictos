@@ -6,6 +6,8 @@
   <% board = {} %>
     <% @users.each do |user| %>
       <% this_user_score = 0 %>
+      <% this_user_predictions = 0 %>
+      <% this_user_bps = 0 %>
       <% user.games.each do |prediction| %>
         <% if (prediction.title.include? "one") || (prediction.title.include? "two") %>
           <% @results.each do |result| %>
@@ -16,22 +18,30 @@
                 <% if ((prediction.hometeam_prediction > prediction.awayteam_prediction) && (result.hometeam_result > result.awayteam_result)) || ((prediction.hometeam_prediction < prediction.awayteam_prediction) && (result.hometeam_result < result.awayteam_result)) %>
 
                   <% this_user_score += 5 %>
+                  <% this_user_predictions += 5 %>
                 <% end %>
 
                 <% if (prediction.hometeam_prediction == result.hometeam_result) && (prediction.awayteam_prediction == result.awayteam_result) %>
                   <% this_user_score += 7 %>
+                  <% this_user_bps += 7 %>
                 <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-1,result.hometeam_result+1) && prediction.awayteam_prediction.between?(result.awayteam_result-1,result.awayteam_result+1)%>
                   <% this_user_score += 6 %>
+                  <% this_user_bps += 6 %>
                 <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-2,result.hometeam_result+2) && prediction.awayteam_prediction.between?(result.awayteam_result-2,result.awayteam_result+2)%>
                   <% this_user_score += 5 %>
+                  <% this_user_bps += 5 %>
                 <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-3,result.hometeam_result+3) && prediction.awayteam_prediction.between?(result.awayteam_result-3,result.awayteam_result+3)%>
                   <% this_user_score += 4 %>
+                  <% this_user_bps += 4 %>
                 <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-4,result.hometeam_result+4) && prediction.awayteam_prediction.between?(result.awayteam_result-4,result.awayteam_result+4)%>
                   <% this_user_score += 3 %>
+                  <% this_user_bps += 3 %>
                 <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-5,result.hometeam_result+5) && prediction.awayteam_prediction.between?(result.awayteam_result-5,result.awayteam_result+5)%>
                   <% this_user_score += 2 %>
+                  <% this_user_bps += 2 %>
                 <% elsif prediction.hometeam_prediction.between?(result.hometeam_result-6,result.hometeam_result+6) && prediction.awayteam_prediction.between?(result.awayteam_result-6,result.awayteam_result+6)%>
                   <% this_user_score += 1 %>
+                  <% this_user_bps += 1 %>
                 <% end %>
 
               <% end %>
@@ -41,17 +51,38 @@
           <% end %>
         <% end %>
       <% end %>
-      <% board[user.email] = this_user_score %>
+      <% the_user = user.email.split(/@/).first %>
+      <% board[the_user] = this_user_score, this_user_predictions, this_user_bps %>
     <% end %>
 
+    <div class="row">
+      <div class="col-4 leaderboard">
+        punter
+      </div>
+      <div class="col-2 leaderboard">
+        tot
+      </div>
+      <div class="col-2 leaderboard">
+        scores
+      </div>
+      <div class="col-2 leaderboard">
+        bps
+      </div>
+    </div>
 
   <% board.sort_by {|k,v| v}.reverse.each do |player| %>
     <div class="row">
-      <div class="col-5 leaderboard">
+      <div class="col-4 leaderboard">
         <%= player[0]%>
       </div>
-      <div class="col-1 leaderboard">
-        <%= player[1] %>
+      <div class="col-2 leaderboard">
+        <%= player[1][0] %>
+      </div>
+      <div class="col-2 leaderboard">
+        <%= player[1][1] %>
+      </div>
+      <div class="col-2 leaderboard">
+        <%= player[1][2] %>
       </div>
     </div>
   <% end %>
