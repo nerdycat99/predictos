@@ -10,7 +10,7 @@
   <% if current_user %>
     <br />
     <% current_user.games.each do |game| %>
-      <% if (game.title.include? "one") || (game.title.include? "two")%>
+      <% if (game.title.include? "one") || (game.title.include? "two") || (game.title.include? "three")%>
         <%= link_to 'closed', root_path(game), class: 'btn btn-warning' %> &nbsp;
       <% else %>
         <%= link_to 'predict', edit_game_path(game), class: 'btn btn-primary' %> &nbsp;
