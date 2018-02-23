@@ -1,0 +1,14 @@
+<h1>user page</h1>
+
+<% @user.games.each do |prediction| %>
+	<%= prediction.hometeam %> vs <%= prediction.awayteam %> --- <%=prediction.hometeam_prediction%> - <%=prediction.awayteam_prediction%> --- 
+	<% @results.each do |result| %>
+            <% if (result.hometeam.eql? prediction.hometeam) && (result.awayteam.eql? prediction.awayteam) %>
+              <% if prediction.hometeam_prediction.present? && prediction.awayteam_prediction.present?%>
+               <%= result.hometeam_result %> - <%= result.awayteam_result %>
+              <% end %>
+            <% end %>
+     <% end %>
+	
+	<br />
+<% end %>

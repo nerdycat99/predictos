@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+click on user and go to page for that user
+show predictions for that user alongside result and points they scored.
+
+
